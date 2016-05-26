@@ -1,0 +1,73 @@
+<head>
+    <link href="/css/watchlist.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+
+<div id="page-content-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+            <div class="col-lg-12">
+            	<a href="#" ng-click="sidebar.toggled = !sidebar.toggled" class="glyphicon glyphicon-align-justify btn-menu toggle" id="menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <h2>Howdy</h2>
+                <p>This is your watchlist. Here you can keep track of the movies you have already watched or of those you are planning to.<br> Based on your  watchlist we will offer you a series of recommendations.</p>
+            </div>
+        </div>
+	</div>
+</div>
+<hr>
+
+<div ng-repeat="movie in watchlistMovies"  class="repeated-item container-fluid">
+    <div ng-if="movieIndex(movie) % 4 == 0" class="row">
+        <div ng-repeat="n in [$index, $index+1, $index+2, $index + 3]">
+            <section >
+                <div class="col-md-3" ng-show="filteredMovies[n].name">
+                    <div class="thumbnail widget-thumbnail">
+                        <a ng-href="#" ng-click="goToMovieDetails(filteredMovies[n])"
+                           title="{{filteredMovies[n].title	}}">
+                            <img src="{{filteredMovies[n].image}}" width="235" height="348"
+                                 alt="{{filteredMovies[n].name}}"/>
+                        </a>
+
+                        <div class="caption">
+                            <a href="#" ng-click="goToMovieDetails(filteredMovies[n])"
+                               title="{{filteredMovies[n].name}}">
+                                <h4 class="movie-title" ng-bind="filteredMovies[n].name"></h4>
+                            </a>
+
+                            <p  class="truncated-description"
+                                ng-if="filteredMovies[n].description"
+                                ng-bind="truncateName(filteredMovies[n].description)"></p>
+                        </div>
+                        <a href="#" title="{{filteredMovies[n].name}}" ng-click="open(filteredMovies[n])"
+                           class="btn btn-primary watch">Watch</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="row recommendations">
+	<div class="col-lg-12">
+        <h2>Recommendations</h2>
+     </div>
+	<section>
+		<div class="col-md-3">
+            <div class="thumbnail widget-thumbnail">
+                <a>
+                 <img src="http://posterposse.com/wp-content/uploads/2014/10/interstellar-poster.jpg" width="235" height="348"/>
+                </a>
+                <div class="caption">
+                    <a href="#">
+                        <h4>Interstellar</h4>
+                    </a>
+                    <p>A team of explorers travel through a wormhole in an attempt to ensure humanity's survival ...</p>
+                </div>
+                <a href="#" class="btn btn-primary">Watch</a>
+             </div>
+         </div>
+	</section>
+</div>

@@ -1,0 +1,88 @@
+<head>
+    <link href="/css/selectedMovie.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-8">
+                 <a href="#" ng-click="sidebar.toggled = !sidebar.toggled" class="glyphicon glyphicon-align-justify btn-menu toggle" id="menu-toggle">
+                <i class="fa fa-bars"></i>
+                </a>
+                <h2>{{movie.name}}</h2>
+                <hr/>
+                <h5>Your rating:</h5>
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" ng-model="movieRating.value"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" ng-model="movieRating.value"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" ng-model="movieRating.value"/><label class = "full" for="star4" title="Good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" ng-model="movieRating.value"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" ng-model="movieRating.value"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" ng-model="movieRating.value"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" ng-model="movieRating.value"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" ng-model="movieRating.value"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" ng-model="movieRating.value"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" ng-model="movieRating.value"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+
+                <br>
+                <h5>Average user rating:</h5>
+                <fieldset class="rating">
+                    <input type="radio" id="star55" name="rating2" value="5" ng-model="movieRating.averageValue" disabled/><label class = "full" for="star55" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half5" name="rating2" value="4 and a half" ng-model="movieRating.averageValue" disabled/><label class="half" for="star4half5" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star45" name="rating2" value="4" ng-model="movieRating.averageValue" disabled/><label class = "full" for="star45" title="Good - 4 stars"></label>
+                    <input type="radio" id="star3half5" name="rating2" value="3 and a half" ng-model="movieRating.averageValue" disabled/><label class="half" for="star3half5" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star35" name="rating2" value="3" ng-model="movieRating.averageValue" disabled/><label class = "full" for="star35" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half5" name="rating2" value="2 and a half" ng-model="movieRating.averageValue" disabled/><label class="half" for="star2half5" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star25" name="rating2" value="2" ng-model="movieRating.averageValue" disabled/><label class = "full" for="star25" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half5" name="rating2" value="1 and a half" ng-model="movieRating.averageValue" disabled/><label class="half" for="star1half5" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star15" name="rating2" value="1" ng-model="movieRating.averageValue" disabled/><label class = "full" for="star15" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf5" name="rating2" value="half" ng-model="movieRating.averageValue" disabled/><label class="half" for="starhalf5" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                <hr/>
+                <p>{{movie.description}}</p>
+                <h3>Synopsis:</h3>
+                <p ng-bind="movie.synopsis" ng-if="movie.synopsis != null"></p>
+                <p ng-if="movie.synopsis === '' || movie.synopsis == null">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ab nesciunt aperiam! Ipsa adipisci cupiditate repudiandae
+                    placeat, distinctio dolorum, doloremque, quod recusandae fugiat nobis est quam labore at repellat assumenda!</p>
+            </div>
+            <div class="col-lg-4">
+                <img width="280" height="400" ng-src="{{getMovieImage()}}" alt="{{movie.name}}" />
+                <a>
+                    <button class="addWatchlist" action="#">Add to Watchlist</button>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <ul>
+                    <li ng-repeat="post in posts">
+                        <p>{{post.text}}</p>
+                        <em>
+                            <b>by {{post.userName}}</b>
+                        </em>
+                        <br/>
+                        <em ng-if="getReviewValue(post)">
+                            <b>rating: {{getReviewValue(post) }} stars</b>
+                        </em>
+                        <br/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" ng-if="userHasNotPosted()">
+            <div class="col-md-6">
+                <form class="form-group"  ng-submit="submitNewPost()" name="review-frm">
+                    <label for="comment">Write your review:</label>
+                    <textarea name="review"  ng-model="review.text" class="form-control" rows="5" id="comment" required> </textarea><br/>
+                    <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary spacer send-button">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

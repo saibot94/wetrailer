@@ -1,0 +1,6 @@
+#node-modules file
+movie-app/node_modules/*
+movie-app/npm-debug.log
+.idea
+typings/angularjs/
+npm-debug.log

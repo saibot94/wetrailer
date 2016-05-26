@@ -1,0 +1,85 @@
+/*Rating system*/
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+.spacer {
+	margin-top: 10px;
+}
+.rating { 
+ 	border: none;
+ 	width: 20%;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rating > .half:before { 
+	content: "\f089";
+	position: absolute;
+}
+
+.rating > label { 
+	color: #ddd; 
+	float: right; 
+}
+
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+/*Add to your watchilist button*/
+.addWatchlist {
+	height: 50px;
+	width: 200px;
+	background-color: #ffffff;
+	border: 2px solid #333333;
+	color: #333333;
+	margin-top: 3%;
+	margin-left: 13%;
+	font-family: 'Roboto';
+}
+/*Send button*/
+.send-button {
+	background-color: #ffffff;
+	color: #333333;
+	border: 2px solid #333333;
+	font-family: 'Roboto';
+	border-radius: 0;
+}
+
+.addWatchlist:hover {
+	background-color: #333333;
+	color: #ffffff;
+}
+.send-button:hover {
+	background-color: #333333;
+	border-color: #333333;
+	color: #ffffff;
+}
+
+.watch {
+	background-color: #ffffff;
+	color: #333333;
+	border: 2px solid #333333;
+	font-family: 'Roboto';
+	border-radius: 0;
+	margin-top: 5px !important;
+}
+.watch:hover {
+	background-color: #333333;
+	border-color: #333333;
+	color: #ffffff;
+};

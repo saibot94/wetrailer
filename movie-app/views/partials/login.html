@@ -1,0 +1,56 @@
+<div id="myCarousel" class="carousel slide" >
+
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- ng-show="user.userNotFound === true"-->
+    <div class="alert alert-info" ng-show="user.userNotFound === true" 	>
+        Login failure! You may have entered your email address or password incorrectly.
+        <a  ng-href="/sign-up" ><button class="btn btn-primary pull-right">Sign up</button> </a>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="item active page1">
+            <img src="/images/bg1.jpg" class="img-responsive">
+        </div>
+        <div class="item">
+            <img src="/images/bg2.jpg" class="img-responsive">
+        </div>
+        <div class="item">
+            <img src="/images/bg3.jpg" class="img-responsive">
+        </div>
+    </div>
+    <div >
+
+        <form class="col-sm-12 login-form" name="loginForm" novalidate >
+            <div class="form-group col-sm-4 col-sm-offset-4" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                <!-- <label for="email">Email address:</label>-->
+                <input type="email" name="email" ng-model="user.email" placeholder="Email address: "  class="form-control form-style" required>
+                <div class="alert alert-danger" ng-show="loginForm.email.$error.required && !loginForm.email.$pristine" role="alert">An email address is required</div>
+            </div>
+
+            <div class="form-group col-sm-4 col-sm-offset-4"  ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                <!-- <label for="pwd">Password:</label>-->
+                <input type="password" placeholder="Password: " name="password" class="form-control form-style" ng-model="user.password"  ng-minlength=5 required >
+                <div class="alert alert-danger" role="alert" ng-show="loginForm.password.$error.minlength && !loginForm.password.$pristine">Password must have at least 5 characters</div>
+
+            </div>
+            <div class="form-group col-sm-2 col-sm-offset-4" >
+                <button type="submit" class="btn btn-default login" ng-disabled="loginForm.$invalid" ng-click="submitForm(user)">Log in</button>
+            </div>
+            <div class="form-group col-sm-2 col-sm-offset-1 ">
+                <div class="checkbox remember-me">
+                    <label>
+                        <input type="checkbox" ng-model="user.rememberMe">Remember me</input>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2 col-sm-offset-7 click-here-to-signup" >
+                Don't have an account? <br/><a ng-href="/sign-up">sign up here!</a>
+            </div>
+        </form>
+    </div>
+</div>

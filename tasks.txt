@@ -1,0 +1,24 @@
+Tasks for next week
+
+1* sidebar
+	
+
+2* landing page 
+	- page 1 : slideshow ( http://hdw.eweb4.com/categories/movies/ )
+ 	- page 2 : about us
+	- controllers (angular)
+	- controllers (node)
+	- logo
+	- design	
+
+3* initial db
+	- Movies table
+		* name
+		* description
+		* thumbnail
+		* large_img
+		* start date
+		* youtube_id
+	- Users table
+		* name
+		* password
